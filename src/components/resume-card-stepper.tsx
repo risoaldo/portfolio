@@ -14,7 +14,7 @@ const works = [
     company: "Sebrae ",
     href: "https://sebrae.com.br/sites/PortalSebrae",
     badges: [],
-    location: "Remote",
+    location: "Remoto",
     title: "Desenvolvedor Front End",
     logoUrl: "",
     start: "Outubro 2021",
