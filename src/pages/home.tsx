@@ -35,7 +35,7 @@ const EDUCATION = [
 ];
 export const Home: React.FC = () => {
   return (
-    <div className='min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 p-6"'>
+    <div className='min-h-screen bg-background font-mono antialiased max-w-2xl mx-auto py-12 sm:py-24 p-6"'>
       <main className="flex flex-col min-h-[100dvh] space-y-10 p-3">
         <section id="hero">
           <div className="mx-auto w-full max-w-2xl space-y-8">
@@ -43,9 +43,9 @@ export const Home: React.FC = () => {
               <div className="flex-col flex flex-1 space-y-1.5">
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY}
-                  className="text-2xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none"
+                  className="text-2xl font-bold tracking-tighter sm:text-2xl xl:text-4xl/none"
                   yOffset={8}
-                  text={`Hi, I'm <Risoaldo/> 👋`}
+                  text={`<Risoaldo Nóbrega/>`}
                 />
                 <BlurFadeText
                   className="max-w-[600px] md:text-xl"
