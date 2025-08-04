@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { ArrowRight, Badge } from "lucide-react";
+import { ArrowRight, Badge, MapPin } from "lucide-react";
 import BlurFade from "./magicui/blur-fade";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -52,7 +52,7 @@ const ResumeCardStepper: React.FC = () => {
   const [filter, setFilter] = React.useState<string>("All");
   const [search, setSearch] = React.useState<string>("");
 
-  const filterOptions = ["All", "Remote", "Presencial"];
+  const filterOptions = ["All", "Remoto", "Presencial"];
 
   const filtered = React.useMemo(() => {
     return works
@@ -127,29 +127,39 @@ const ResumeCardStepper: React.FC = () => {
             </div>
             <Card className="shadow-lg hover:shadow-2xl hover:scale-[1.01] transition-transform">
               <CardHeader className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    {work.logoUrl ? (
-                      <div className="w-14 h-14 rounded-full overflow-hidden bg-muted flex items-center justify-center">
-                        <img
-                          src={work.logoUrl}
-                          alt={`${work.company} logo`}
-                          className="object-cover w-full h-full"
-                        />
+                <div className="flex flex-col items-start gap-4">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0">
+                      {work.logoUrl ? (
+                        <div className="w-14 h-14 rounded-full overflow-hidden bg-muted flex items-center justify-center">
+                          <img
+                            src={work.logoUrl}
+                            alt={`${work.company} logo`}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-gray-900 to-gray-900 flex items-center justify-center text-white font-semibold">
+                          {work.company[0]}
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <div className="flex flex-col items-start gap-2">
+                        <h4 className="text-lg font-semibold">{work.title}</h4>
+
+                        <div className="text-xs uppercase tracking-wide text-zinc-500">
+                          {work.start} - {work.end}
+                        </div>
                       </div>
-                    ) : (
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-gray-900 to-gray-900 flex items-center justify-center text-white font-semibold">
-                        {work.company[0]}
-                      </div>
-                    )}
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-semibold">{work.title}</h3>
-                      <span className="text-sm text-muted-foreground">
-                        {work.location}
+                      <span className="flex items-center gap-1 text-sm text-muted-foreground">
+                       <MapPin width={18} /> {work.location}
                       </span>
                     </div>
+
+                    
+                  </div>
+                  <div>
                     <a
                       href={work.href || "#"}
                       target="_blank"
@@ -165,12 +175,10 @@ const ResumeCardStepper: React.FC = () => {
                         </Badge>
                       ))}
                     </div>
-                    <div className="text-xs uppercase tracking-wide text-zinc-500">
-                      {work.start} - {work.end}
-                    </div>
                   </div>
                 </div>
               </CardHeader>
+              
               <CardContent>
                 <p className="text-sm leading-relaxed">{work.description}</p>
               </CardContent>
